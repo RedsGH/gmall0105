@@ -5,7 +5,6 @@ import com.atguigu.gmall.user.bean.UmsMemberReceiveAddress;
 import com.atguigu.gmall.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,6 +15,20 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @RequestMapping("delUserById")
+    @ResponseBody
+    public String delUserById(String id){
+
+        int result = userService.delUserById(id);
+
+        if(result != 0){
+            return "success";
+        }
+        else {
+            return "fail";
+        }
+    }
 
     @RequestMapping("getRecieveAdressByMemberId")
     @ResponseBody
